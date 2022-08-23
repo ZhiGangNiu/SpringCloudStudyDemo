@@ -1,0 +1,30 @@
+server:
+  port: 9091
+spring:
+  datasource:
+    url: jdbc:mysql://139.196.40.89:3306/cloud_order?useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: orderservice
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+  config:
+    import:
+      - optional:nacos:orderservice-dev.yml  # 监听 PROVIDER_GROUP :provider-config-dev.yml
+      #      - optional:nacos:orderservice-dev.yml?group=group_01  # 覆盖默认 group，监听 group_01:orderservice-dev.yml
+      #      - optional:nacos:orderservice-dev.yml?group=group_02&refreshEnabled=false # 不开启动态刷新
+      - nacos:orderservice-dev.yml # 在拉取nacos配置异常时会快速失败，会导致 spring 容器启动失败
+
+mybatis:
+  type-aliases-package: cn.itcast.user.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    cn.itcast: debug
+
+
