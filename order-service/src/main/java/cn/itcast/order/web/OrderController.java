@@ -1,6 +1,5 @@
 package cn.itcast.order.web;
 
-import cn.itcast.order.config.PatternProperties;
 import cn.itcast.order.pojo.Order;
 import cn.itcast.order.service.OrderService;
 import org.checkerframework.checker.units.qual.A;
@@ -25,20 +24,20 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
-    @Autowired
-    private PatternProperties properties;
+//    @Autowired
+//    private PatternProperties properties;
 
-    @GetMapping("/prop")
-    public PatternProperties prop() {
-        return properties;
-    }
+//    @GetMapping("/prop")
+//    public PatternProperties prop() {
+//        return properties;
+//    }
 
 
-    @GetMapping("/now")
-    public String now() {
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(properties.getDateformat()
-        ));
-    }
+//    @GetMapping("/now")
+//    public String now() {
+//        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(properties.getDateformat()
+//        ));
+//    }
 
     @GetMapping("{orderId}")
     public Order queryOrderByUserId(@PathVariable("orderId") Long orderId) {

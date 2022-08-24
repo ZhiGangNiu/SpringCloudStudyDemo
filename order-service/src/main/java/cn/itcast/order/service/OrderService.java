@@ -19,9 +19,9 @@ public class OrderService {
         // 1.查询订单
         Order order = orderMapper.findById(orderId);
         // 2.查询user
-        User user = restTemplate.getForObject("http://userservice/user/" + order.getUserId(), User.class);
+//        User user = restTemplate.getForObject("http://userservice/user/" + order.getUserId(), User.class);
         // 3.写入User
-        order.setUser(user);
+//        order.setUser(user);
         // 4.返回
         return order;
     }
