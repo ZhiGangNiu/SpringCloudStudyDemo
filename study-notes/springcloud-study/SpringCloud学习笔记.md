@@ -242,11 +242,45 @@ POM 文件中 "spring-cloud-starter-loadbalancer" 依赖即可
 
 3. nacos 配置中心 新增 orderservice-dev.yml 文件,内容写入：pattern:dateformat: yyyy-MM-dd HH:mm:ss #此处忽略格式
 
-   ![image-20220823011134132](./nacos 配置中心.jpg)
+   ![nacos 配置中心](./nacos 配置中心.jpg)
 
 4. 测试
 
-   ![image-20220823011341676](./nacos配置中心测试case.png)
+   ![nacos配置中心测试case](./nacos配置中心测试case.png)
+
+------
+
+## http客户端Feign 
+
+```txt 
+Feign是一个声明式的http客户端，其作用就是实现Http请求的方式，解决url在代码中的嵌套耦合
+```
+
+``` yaml
+ <dependency>
+   <groupId>org.springframework.cloud</groupId>
+   <artifactId>spring-cloud-starter-openfeign</artifactId>
+ </dependency>
+ 
+ 1. 启动类增加启动注解 @EnableFeignClient
+ 2. 创建接口类，增加注解 @FeignClient 
+ 3. 编写调用方法增加请求注解 如：GetMapping
+```
+
+ ![Feign日志配置](./Feign日志配置.png)
+
+#### Feign性能优化
+
+Feign底层的客户端实现
+
+- URLConnection：默认实现，不支持连接池
+- Apache HttpClient：支持连接池
+- OKHttp：支持连接池
+
+Feign的性能优化主要有：
+
+- 使用连接池替代默认的URLConnection
+- 日志级别，最好使用basic或none
 
 ------
 

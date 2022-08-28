@@ -20,8 +20,8 @@ public class MyLoadBalancerConfig {
     }
 
     // 参数 serviceInstanceListSupplierProvider 会自动注入
-    @Bean
-    public ReactorServiceInstanceLoadBalancer customLoadBalancer(ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider) {
-        return new CustomRandomLoadBalancerClient(serviceInstanceListSupplierProvider);
-    }
+//    @Bean
+//    public ReactorServiceInstanceLoadBalancer customLoadBalancer(ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider) {
+//        return new CustomRandomLoadBalancerClient(serviceInstanceListSupplierProvider);
+//    }
 }
